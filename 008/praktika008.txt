@@ -1,0 +1,29 @@
+# Генератор возвращает случайное число
+import random
+def genrandomint():
+    while True:
+        yield random.randint(1,111111111)
+
+
+# Генератор работат как range()
+def range_mod(begin, end, step = 1):
+    massive = []
+    while begin != end:
+        massive.append(begin)
+        begin += step
+    yield massive
+
+# Генератор работает как map()    
+def map_mod(functions, spisok):
+    for i in spisok:
+        x = functions(i)
+    yield x
+
+# Генератор работает как enumerate()
+def enumes(a1):
+    for i in a1:
+        print(a1.index(i), i)
+    yield i
+
+# Генератор работает как zip()
+my_zip = lambda *args: (tuple(arg[i] for arg in args) for i in range(len(min(args, key=len))))

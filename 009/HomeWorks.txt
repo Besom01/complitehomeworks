@@ -1,0 +1,61 @@
+#Задачи
+
+#Реализовать две функции: write_to_file(data) и read_file_data().
+#Которые соотвественно: пишут данные в файл и читают данные из файла.
+
+#Реализовать следующую логику: получать при помощи requests данные сервиса https://jsonplaceholder.typicode.com/
+#(сущность можно выбрать любую, например https://jsonplaceholder.typicode.com/comments),
+#выводить в консоль все пары заголовки, сохранять полученный json в файл на диск
+
+#Обратиться с странице https://habrahabr.ru/. Получить текст страницы.
+#При помощи регулярных выражений нужно получить все ссылки со страницы на другие.
+#Ответить себе на вопрос удобно ли так делать?
+
+# PART 1
+
+#def write_to_file(filename, content, mode = 'a'):
+#	with open(filename, mode = mode) as file:
+#		return file.write(content)
+
+#def read_file_data(filename):
+#	with open(filename) as file:
+#		return print(file.read())
+
+#test = write_to_file('HomeWorks1.txt','\n1asdasd')
+#test2 = read_file_data('HomeWorks1.txt')
+
+#PART 2
+
+#import requests
+#import json
+
+#def get_json_headers(filename, mode = 'a'):
+#	page = requests.get('https://jsonplaceholder.typicode.com')
+#	print(page.headers)
+#	content = dict(page.headers)
+#	jsoncontent = json.dumps(content)
+#	with open(filename, mode = mode) as file:
+#		return file.write(jsoncontent)
+
+#test3 = get_json_headers('headers.json')
+
+
+import requests
+import re
+
+def get_urls():
+	page = requests.get('https://habrahabr.ru')
+	content = str(page.content)
+	name_pattern = r'href="http?.+"'
+	urls = re.findall(name_pattern, content)
+	print(urls)
+
+test4 = get_urls()
+
+class ContactForm(FlaskForm):
+	email = StringField(label='E-mail', validators=[
+        validators.Length(min=6, max=35),
+        validators.Email(),
+        validators.Required()])
+    pass1 = StringField(validators=[validators.Length(min=6, max=35)])
+    pass2 = StringField(validators=[validators.Length(min=6, max=25)])
