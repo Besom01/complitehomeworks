@@ -1,0 +1,11 @@
+Congratilations! You post created!
+
+{% block main %}
+PostTitle:{{post.title}} PostID:{{post.id}}
+Content:
+{{post.content}}
+Date Create:{{post.date_create}}
+{% endblock %}
+
+Created by besom01! This my first 2ch!
+Some extra but important information.

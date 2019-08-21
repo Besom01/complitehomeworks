@@ -1,0 +1,24 @@
+Congratilations! You comment created!
+
+{% block post %}
+PostTitle:{{comment.post.title}} PostID:{{comment.post.id}}
+Content:
+{{comment.post.content}}
+Date Create:{{comment.post.date_create}}
+{% endblock %}
+
+
+Comments
+{% block comments %}
+{% for c in all_comments_post %}
+    comment id: {{comment.id}}
+    comment date: {{comment.comment_date_create}}
+    Content: {{comment.comment_content}}
+{% endfor %}
+{% endblock %}
+
+
+
+
+Created by besom01! This my first 2ch!
+Some extra but important information.
